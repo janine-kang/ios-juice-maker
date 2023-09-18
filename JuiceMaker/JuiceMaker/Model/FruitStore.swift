@@ -7,11 +7,11 @@
 import Foundation
 
 final class FruitStore {
-    private var fruitList = [Fruit: Int]()
+    var fruitList = [Fruit: Int]()
     
     init() {
         Fruit.allCases.forEach {
-            self.fruitList.updateValue(10, forKey: $0)
+            self.fruitList.updateValue(20, forKey: $0)
         }
     }
     

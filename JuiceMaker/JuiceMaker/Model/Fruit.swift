@@ -7,8 +7,8 @@
 
 import Foundation
 
-enum Fruit: CaseIterable {
-    case strawberry
+enum Fruit: String, CaseIterable {
+    case strawberry 
     case banana
     case kiwi
     case pineapple

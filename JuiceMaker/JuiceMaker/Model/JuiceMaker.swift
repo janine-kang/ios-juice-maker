@@ -9,15 +9,18 @@ import Foundation
 struct JuiceMaker {
     let myFruitStore: FruitStore = FruitStore()
     
-    func order(_ choice: Menu) {
+    func order(_ choice: Menu) -> Bool {
+        var isSoldOut = false
         do {
             let checkedMenu = try checkAvailable(choice)
             makeJuice(checkedMenu)
         } catch OrderError.soldOut {
             print(OrderError.soldOut.rawValue)
+            isSoldOut = true
         } catch {
             print(OrderError.unexpected.rawValue)
         }
+        return isSoldOut
     }
     
     func getRecipe(_ menu: Menu) -> [Fruit: Int] {
@@ -40,6 +43,6 @@ struct JuiceMaker {
     
     func makeJuice(_ menu: Menu) {
         myFruitStore.deduct(menu.recipe)
-        print("\(menu.juice) 완성")
+        print("\(menu.rawValue) 완성")
     }
 }
